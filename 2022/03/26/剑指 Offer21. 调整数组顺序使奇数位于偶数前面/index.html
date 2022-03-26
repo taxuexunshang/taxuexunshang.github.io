@@ -18,20 +18,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>剑指 Offer.52-两个链表的第一个公共节点 - 小杨同学的blog</title>
+  <title>剑指Offer.21-调整数组顺序使奇数位于偶数前面 - 小杨同学的blog</title>
 
   
 
   
-    <meta name="description" content="剑指 Offer.52-两个链表的第一个公共节点">
+    <meta name="description" content="剑指Offer.21-调整数组顺序使奇数位于偶数前面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指 Offer.52-两个链表的第一个公共节点">
-<meta property="og:url" content="http://example.com/2022/03/25/%E5%89%91%E6%8C%87offer52/index.html">
+<meta property="og:title" content="剑指Offer.21-调整数组顺序使奇数位于偶数前面">
+<meta property="og:url" content="http://example.com/2022/03/26/%E5%89%91%E6%8C%87%20Offer21.%20%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/index.html">
 <meta property="og:site_name" content="小杨同学的blog">
-<meta property="og:description" content="剑指 Offer.52-两个链表的第一个公共节点">
+<meta property="og:description" content="剑指Offer.21-调整数组顺序使奇数位于偶数前面">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-25T09:14:22.805Z">
-<meta property="article:modified_time" content="2022-03-25T12:53:29.695Z">
+<meta property="article:published_time" content="2022-03-26T07:13:15.085Z">
+<meta property="article:modified_time" content="2022-03-26T07:37:20.971Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,7 +69,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%83%B3%E6%B3%95"><span class="toc-text">个人想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95"><span class="toc-text">官方解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%83%B3%E6%B3%95"><span class="toc-text">个人想法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95"><span class="toc-text">官方解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="toc-text">代码实现</span></a></li></ol></li></ol></div></div></div>
 
 
 </div>
@@ -81,27 +81,33 @@
 
       
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-25T09:14:22.805Z">2022-03-25</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-26T07:13:15.085Z">2022-03-26</time></div></div>
 
 <article class='content md post'>
-<h1 class="article-title"><span>剑指 Offer.52-两个链表的第一个公共节点</span></h1>
-<p>剑指 Offer.52-两个链表的第一个公共节点</p>
+<h1 class="article-title"><span>剑指Offer.21-调整数组顺序使奇数位于偶数前面</span></h1>
+<p>剑指Offer.21-调整数组顺序使奇数位于偶数前面</p>
 <span id="more"></span>
-<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/">https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/</a></p>
+
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/">剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 - 力扣（LeetCode） (leetcode-cn.com)</a>&gt;</p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p>输入两个链表，找出它们的第一个公共节点</p>
+<p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数在数组的前半部分，所有偶数在数组的后半部分</p>
 </blockquote>
-<h2 id="个人想法"><a href="#个人想法" class="headerlink" title="个人想法"></a>个人想法</h2><p>通过hashSet记录一条链表的访问节点，遍历第二条节点，当出现重复元素时即证明出现重复节点，经编程尝试，无法通过用例1，是因为hashSet会覆盖掉相同元素的节点，任意链表非公共部分与公共部分存在相同元素时，会出现错误，故此法无法通过</p>
-<h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>使用两个指针同时对链表进行遍历，当任意一条节点遍历到头时，从另一条节点的头部开始继续遍历，当两个节点到相同位置时，停止遍历并返回</p>
-<p>如 <code>A =[4,1,8,4,5]，B=[5,0,1,8,4,5]</code>，将链表的公共部分的长度记为<code>c</code>，<code>A</code>链表的非公共长度为<code>a-c</code>，<code>B</code>链表的非公共长度为<code>b-c</code>，按照以上遍历的方案，B的遍历至第一个公共节点长度为<code>(a-c)+b</code>,A的遍历至第一个公共节点的总长度为<code>(b-c)+a</code>，两指针终会在第一个公共节点相遇。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="comment">//在本地中简单使用hashSet连用例1都无法通过</span></span><br><span class="line">        <span class="comment">//双指针同时移动 当一个指针走完的时候 从另一个指针的头部接上</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">ptA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">ptB</span> <span class="operator">=</span> headB;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(ptA != ptB)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ptA == <span class="literal">null</span>)&#123;</span><br><span class="line">                ptA = headB;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ptA = ptA.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(ptB == <span class="literal">null</span>)&#123;</span><br><span class="line">                ptB = headA;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ptB = ptB.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ptA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="个人想法"><a href="#个人想法" class="headerlink" title="个人想法"></a>个人想法</h2><p>开辟一个新的数组，对输入数组进行遍历，遇到奇数从数组左侧插入，否则从右侧进行插入。</p>
+<p><strong>时间复杂度：</strong>$O(N)$</p>
+<p><strong>空间复杂度：</strong>$ O(N)$ </p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] exchange(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="comment">//使用头尾两个指针</span></span><br><span class="line">        <span class="comment">//若为奇数则从前边插入，偶数则从后边插入</span></span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                res[right] = nums[i];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res[left] = nums[i];</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>使用双指针同时从左右两次向中间进行扫描，在左侧扫描到偶数，右侧扫描到奇数时，使用指针记录当前两元素的位置，交换两个元素，直到 $i&#x3D;j$，与个人想法的差距在空间开销上，官解在原地上进行操作，没有额外的空间开销，但会对原始数据进行破坏</p>
+<p><strong>时间复杂度：</strong>$O(N)$</p>
+<p><strong>空间复杂度：</strong>$ O(1)$ </p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] exchange(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = nums.length - <span class="number">1</span>, tmp;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">            <span class="comment">//&amp; 1操作与%2 == 0相等</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; (nums[i] &amp; <span class="number">1</span>) == <span class="number">1</span>) i++;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; j &amp;&amp; (nums[j] &amp; <span class="number">1</span>) == <span class="number">0</span>) j--;</span><br><span class="line">            tmp = nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/25/%E5%89%91%E6%8C%87offer46_48/">剑指Offer.46-把数字翻译成字符串&48-最长不含重复字符的子字符串<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/26/%E5%89%91%E6%8C%87%20Offer21.%20%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">剑指Offer.21-调整数组顺序使奇数位于偶数前面<span class="note">较新</span></a></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/25/%E5%89%91%E6%8C%87offer52/">剑指 Offer.52-两个链表的第一个公共节点<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/26/%E5%89%91%E6%8C%87Offer.57-%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/">剑指Offer.57-和为s的两个数字<span class="note">较新</span></a></section></div>
 
 
 
