@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.1.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Spring深入学习-IOC容器 - 小杨同学的blog</title>
+
+  
+
+  
+    <meta name="description" content="Spring深入学习-IOC容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring深入学习-IOC容器">
+<meta property="og:url" content="http://example.com/2022/03/27/SpringIOC%E5%AE%B9%E5%99%A8/index.html">
+<meta property="og:site_name" content="小杨同学的blog">
+<meta property="og:description" content="Spring深入学习-IOC容器">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-27T06:54:23.719Z">
+<meta property="article:modified_time" content="2022-03-27T13:00:37.153Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/image/touxiang.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">小杨同学的blog</div><div class="sub cap">少即是多，慢即是快</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/notes/">关于我</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">Spring的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC"><span class="toc-text">IOC 控制反转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOC%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-text">IOC底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOC%E6%8E%A5%E5%8F%A3-BeanFactory"><span class="toc-text">IOC接口(BeanFactory)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOC%E6%8E%A5%E5%8F%A3-ApplicationContext"><span class="toc-text">IOC接口(ApplicationContext)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-text">实现类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOCBean%E7%AE%A1%E7%90%86%EF%BC%88%E5%9F%BA%E4%BA%8EXML%EF%BC%89"><span class="toc-text">IOCBean管理（基于XML）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%EF%BC%88FactoryBean%EF%BC%89"><span class="toc-text">Bean（FactoryBean）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">Bean的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Bean的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%EF%BC%88XML%EF%BC%89%E5%AE%9E%E9%99%85%E4%B8%AD%E7%94%A8%E7%9A%84%E5%BE%88%E5%B0%91"><span class="toc-text">Bean自动装配（XML）实际中用的很少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean%E7%9B%B8%E5%85%B3%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="toc-text">Bean相关的注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA"><span class="toc-text">1.基于注解方式实现对象创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%8F%AA%E6%89%AB%E6%8F%8F%E7%89%B9%E6%AE%8A%E7%B1%BB%E7%9A%84%E6%B3%A8%E8%A7%A3%EF%BC%88%E8%83%BD%E5%A4%9F%E7%9C%8B%E6%87%82%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="toc-text">指定只扫描特殊类的注解（能够看懂即可）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%B1%9E%E6%80%A7%E6%B3%A8%E5%85%A5"><span class="toc-text">2.基于注解方式实现属性注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%8C%E5%85%A8%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%EF%BC%88%E9%80%9A%E5%B8%B8%E5%9C%A8SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-text">3.完全注解开发（通常在SpringBoot中使用）</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-27T06:54:23.719Z">2022-03-27</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Spring深入学习-IOC容器</span></h1>
+<p>Spring深入学习-IOC容器</p>
+<span id="more"></span>
+
+<h2 id="Spring的基本概念"><a href="#Spring的基本概念" class="headerlink" title="Spring的基本概念"></a>Spring的基本概念</h2><blockquote>
+<p>1.Spring是轻量级的开源的JavaEE框架，目的是解决企业应用开发的复杂性</p>
+<p>轻量级 -&gt; Jar包及体积都很小，可独立使用</p>
+<p>开源 -&gt; 免费提供源代码</p>
+<p>核心的组成部分<strong>IOC</strong> <strong>AOP</strong></p>
+</blockquote>
+<h2 id="IOC-控制反转"><a href="#IOC-控制反转" class="headerlink" title="IOC 控制反转"></a>IOC 控制反转</h2><blockquote>
+<p>把创建对象的任务由原来的程序员编写，转化为交给Spring去管理创建</p>
+</blockquote>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>控制反转，将对象创建与对象之间的调用过程，交给Spring去处理，降低代码之间的耦合度</p>
+<h3 id="IOC底层原理"><a href="#IOC底层原理" class="headerlink" title="IOC底层原理"></a>IOC底层原理</h3><ol>
+<li>XML解析：得到配置文件的全类名</li>
+<li>工厂模式</li>
+<li>反射：根据全类名，使用反射创建对象</li>
+</ol>
+<h3 id="IOC接口-BeanFactory"><a href="#IOC接口-BeanFactory" class="headerlink" title="IOC接口(BeanFactory)"></a>IOC接口(BeanFactory)</h3><p>IOC容器中的基本实现，Spring中内部使用的接口，<strong>一般不建议在开发中使用</strong>。在加载配置文件时候不会创建对象，在获取对象使用时才会创建对象。</p>
+<h3 id="IOC接口-ApplicationContext"><a href="#IOC接口-ApplicationContext" class="headerlink" title="IOC接口(ApplicationContext)"></a>IOC接口(ApplicationContext)</h3><p>BeanFactory的子接口，提供了更多更强大的功能，<strong>面向开发人员提供</strong>。在加载配置文件的时候，就会将配置文件中的对象创建。由于目前较多的都是Web服务，倾向于在服务器启动时就完成资源的创建，降低用户使用服务的等待时间</p>
+<h5 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h5><ul>
+<li>ClassPathXmlApplicationContext：传入参数为src下的类路径</li>
+<li>FileSystemXmlApplicationContext：传入参数为绝对路径</li>
+</ul>
+<h3 id="IOCBean管理（基于XML）"><a href="#IOCBean管理（基于XML）" class="headerlink" title="IOCBean管理（基于XML）"></a>IOCBean管理（基于XML）</h3><p>注入属性的方式有以下几种</p>
+<ul>
+<li>基于proprity标签进行注入</li>
+<li>使用有参构造constructor-arg方式进行注入</li>
+<li>使用p名称空间注入，可简化XML配置（实际中使用的不多）</li>
+</ul>
+<h2 id="Bean（FactoryBean）"><a href="#Bean（FactoryBean）" class="headerlink" title="Bean（FactoryBean）"></a>Bean（FactoryBean）</h2><p>Spring中有两种类型的Bean，用户创建的为普通bean，另一种为工厂bean（Factory bean）</p>
+<ul>
+<li>普通bean：定义类型即为返回类型</li>
+<li>工厂bean：在配置文件中定义的类型可以与返回类型不同</li>
+</ul>
+<h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><p>bean在默认的情况下是一个单例对象，可通过设置将其设置为一个多例对象</p>
+<h2 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h2><blockquote>
+<p>从对象创建到销毁的过程就称为一个生命周期</p>
+</blockquote>
+<ol>
+<li>通过构造器创建Bean的实例（构造器）</li>
+<li>为Bean的属性设置值，和对其他bean的引用（调用Set方法）</li>
+<li>调用Bean的初始化方法（需要进行配置）</li>
+<li>Bean可以使用了（对象获取到了）</li>
+<li>当容器关闭的时候，调用bean销毁的方法（需要配置销毁的方法）</li>
+</ol>
+<p>加上后置处理器后，生命周期变为7步，通过创建类，实现<code>BeanPostProcessor</code>接口，并在XML方法中配置后，Spring会将其作为所有bean的后置处理器</p>
+<ol>
+<li>通过构造器创建Bean的实例（构造器）</li>
+<li>为Bean的属性设置值，和对其他bean的引用（调用Set方法）</li>
+<li>调用后置处理器的<code>postProcessBeforeInitlization</code>方法</li>
+<li>调用Bean的初始化方法（需要进行配置）</li>
+<li>调用后置处理器的<code>postProcessAfterInitlization</code>方法</li>
+<li>Bean可以使用了（对象获取到了）</li>
+<li>当容器关闭的时候，调用bean销毁的方法（需要配置销毁的方法）</li>
+</ol>
+<h2 id="Bean自动装配（XML）实际中用的很少"><a href="#Bean自动装配（XML）实际中用的很少" class="headerlink" title="Bean自动装配（XML）实际中用的很少"></a>Bean自动装配（XML）实际中用的很少</h2><blockquote>
+<p>根据指定的规则（属性名称或者属性类型），Spring自动将匹配的属性值进行注入</p>
+</blockquote>
+<ul>
+<li>根据属性名称的自动装配（byName），注入属性的id值需要与声明的参数值相同</li>
+<li>根据属性类型的自动装配（byType），当同类型bean存在两个及以上时，无法确定根据那个实现自动注入</li>
+</ul>
+<h2 id="Bean相关的注解"><a href="#Bean相关的注解" class="headerlink" title="Bean相关的注解"></a>Bean相关的注解</h2><p>创建对象的相关注解（实际中是可以混用的）</p>
+<ol>
+<li>@Component：</li>
+<li>@Service：用在业务层</li>
+<li>@Controller：用在控制层</li>
+<li>@Repository：一般用于DAO层或者持久层上</li>
+</ol>
+<p><strong>上面四个注解的功能是一样的，都能用于创建对象</strong></p>
+<h3 id="1-基于注解方式实现对象创建"><a href="#1-基于注解方式实现对象创建" class="headerlink" title="1.基于注解方式实现对象创建"></a>1.基于注解方式实现对象创建</h3><ol>
+<li>在使用注解的时候需要引入AOP的依赖</li>
+<li>开启组件扫描（XML文件中Component-scan配置）</li>
+<li>在类上添加注解，使Spring能够将其作为组件进行创建</li>
+</ol>
+<h3 id="指定只扫描特殊类的注解（能够看懂即可）"><a href="#指定只扫描特殊类的注解（能够看懂即可）" class="headerlink" title="指定只扫描特殊类的注解（能够看懂即可）"></a>指定只扫描特殊类的注解（能够看懂即可）</h3><ol>
+<li>将<code>use-default-filters</code>属性设置为<code>false</code>后再通过<code>include-filter</code>标签执行扫描那些注解</li>
+<li>通过<code>exclude-filter</code>标签标记不扫描那些注解</li>
+</ol>
+<h3 id="2-基于注解方式实现属性注入"><a href="#2-基于注解方式实现属性注入" class="headerlink" title="2.基于注解方式实现属性注入"></a>2.基于注解方式实现属性注入</h3><p>针对对象类型注入（不需要添加Set方法）</p>
+<ol>
+<li>@AutoWired：根据属性类型进行自动注入</li>
+<li>@Qualifer：根据属性名称进行自动注入（需要与@AutoWired一起使用）</li>
+<li>Resourece：可以根据类型，也可以根据名称注入</li>
+</ol>
+<p>针对普通类型进行注入</p>
+<ol>
+<li>@Value 给普通数据类型注入的注解</li>
+</ol>
+<h3 id="3-完全注解开发（通常在SpringBoot中使用）"><a href="#3-完全注解开发（通常在SpringBoot中使用）" class="headerlink" title="3.完全注解开发（通常在SpringBoot中使用）"></a>3.完全注解开发（通常在SpringBoot中使用）</h3><ol>
+<li>创建SpringConfig类，作为配置类，在类名上增加<code>@Configuration</code>注解，告诉Spring此类为配置类，用其替代XML配置文件</li>
+</ol>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/26/%E5%89%91%E6%8C%87-Offer.58-I.%E7%BF%BB%E8%BD%AC%E5%8D%95%E8%AF%8D%E9%A1%BA%E5%BA%8F/">剑指 Offer.58-I.翻转单词顺序<span class="note">较早</span></a><div class="line"></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="http://example.com/">@John Doe</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti/umd/heti.min.css","js":"https://unpkg.com/heti/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
