@@ -18,20 +18,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>剑指 Offer.41-数据流中的中位数 - 小杨同学的blog</title>
+  <title>剑指 Offer.55-二叉树的深度 - 小杨同学的blog</title>
 
   
 
   
-    <meta name="description" content="剑指 Offer.41-数据流中的中位数">
+    <meta name="description" content="剑指 Offer.55-二叉树的深度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指 Offer.41-数据流中的中位数">
-<meta property="og:url" content="http://example.com/2022/03/30/%E5%89%91%E6%8C%87offer41/index.html">
+<meta property="og:title" content="剑指 Offer.55-二叉树的深度">
+<meta property="og:url" content="http://example.com/2022/03/31/%E5%89%91%E6%8C%87offer55/index.html">
 <meta property="og:site_name" content="小杨同学的blog">
-<meta property="og:description" content="剑指 Offer.41-数据流中的中位数">
+<meta property="og:description" content="剑指 Offer.55-二叉树的深度">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-30T03:15:53.003Z">
-<meta property="article:modified_time" content="2022-03-30T05:07:06.339Z">
+<meta property="article:published_time" content="2022-03-31T02:52:55.749Z">
+<meta property="article:modified_time" content="2022-03-31T03:02:01.777Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,7 +69,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95"><span class="toc-text">官方解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E8%A7%A3%E6%B3%95%EF%BC%88BFS-%E8%AE%A1%E6%95%B0%EF%BC%89"><span class="toc-text">个人解法（BFS + 计数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E8%A7%A3%E6%B3%95%EF%BC%88DFS%EF%BC%89"><span class="toc-text">另一种解法（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-text">代码</span></a></li></ol></li></ol></div></div></div>
 
 
 </div>
@@ -81,22 +81,22 @@
 
       
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-30T03:15:53.003Z">2022-03-30</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-31T02:52:55.749Z">2022-03-31</time></div></div>
 
 <article class='content md post'>
-<h1 class="article-title"><span>剑指 Offer.41-数据流中的中位数</span></h1>
-<p>剑指 Offer.41-数据流中的中位数</p>
+<h1 class="article-title"><span>剑指 Offer.55-二叉树的深度</span></h1>
+<p>剑指 Offer.55-二叉树的深度</p>
 <span id="more"></span>
 
-<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/">剑指 Offer 41. 数据流中的中位数</a>&gt;</p>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/">剑指 Offer 55 - I. 二叉树的深度</a>&gt;</p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p>如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。</p>
+<p>输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。</p>
 </blockquote>
-<h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>使用大小顶堆两个进行实现，其中小顶堆需要比大顶堆多一个元素，用于处理奇数情况下的中位数求解，当需要求解中位数的时候，判断当前N为奇数还是偶数，若为奇数，直接从小顶堆弹出元素，否则，求两个堆顶元素的均值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    Start(开始) --&gt; Open[判断当前两个堆的大小是否相同]</span><br><span class="line">    Open --&gt; |相同| Put[将元素放入大顶堆再从大顶堆弹出元素放入小顶堆]</span><br><span class="line">    Open --&gt; |不相同| Smart[将元素放入小顶堆再从大顶堆弹出元素放入大顶堆]</span><br><span class="line"></span><br><span class="line">    Put --&gt; End(结束)</span><br><span class="line">    Smart --&gt; End(结束)</span><br></pre></td></tr></table></figure>
+<h2 id="个人解法（BFS-计数）"><a href="#个人解法（BFS-计数）" class="headerlink" title="个人解法（BFS + 计数）"></a>个人解法（BFS + 计数）</h2><p>使用<code>层序遍历</code>，每次遍历一层将<code>depth</code>加1，在遍历完整棵二叉树的时候返回当前二叉树的深度</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">//使用BFS方案 每遍历一层 层数计数器+1</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">depth</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;TreeNode&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="comment">//当栈不空的时候</span></span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">queueSize</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            depth++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;queueSize;i++)&#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">element</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(element.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    queue.offer(element.left);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(element.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    queue.offer(element.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MedianFinder</span> &#123;</span><br><span class="line">    <span class="comment">//使用两个堆进行实现</span></span><br><span class="line">    Queue&lt;Integer&gt; A,B;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MedianFinder</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 使用默认构造函数 构造得到是一个小顶堆</span></span><br><span class="line">        A = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 使用Lamda表达式传入Comparator 构造大顶堆</span></span><br><span class="line">        B = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;((x,y)-&gt;(y-x));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//在添加元素时，始终保持小顶堆的元素比大顶堆高1</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addNum</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">        <span class="comment">// 当A,B长度不同时，此时证明数据流为奇数 需要将元素添加至B堆中</span></span><br><span class="line">        <span class="comment">// 但添加元素可能属于较小的一部分 所以需要先进A堆 再从A堆弹出一个元素放入B堆</span></span><br><span class="line">        <span class="keyword">if</span>(A.size()!=B.size())&#123;</span><br><span class="line">            A.add(num);</span><br><span class="line">            B.add(A.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//反之亦然</span></span><br><span class="line">            B.add(num);</span><br><span class="line">            A.add(B.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">findMedian</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> A.size()!=B.size()?A.peek():(A.peek()+B.peek())/<span class="number">2.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="另一种解法（DFS）"><a href="#另一种解法（DFS）" class="headerlink" title="另一种解法（DFS）"></a>另一种解法（DFS）</h2><p>二叉树的深度 &#x3D; 左右子树的最大深度，通过<code>后序遍历</code>，持续左右节点的最大深度即可</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> Math.max(maxDepth(root.left),maxDepth(root.right))+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -105,7 +105,7 @@
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/30/%E5%89%91%E6%8C%87offer40/">剑指 Offer.40-把数组排成最小的数<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/31/%E5%89%91%E6%8C%87offer55/">剑指 Offer.55-二叉树的深度<span class="note">较新</span></a></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/30/%E5%89%91%E6%8C%87offer41/">剑指 Offer.41-数据流中的中位数<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/31/%E5%89%91%E6%8C%87offer55-2/">剑指 Offer.II-平衡二叉树<span class="note">较新</span></a></section></div>
 
 
 
