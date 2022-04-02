@@ -18,20 +18,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>剑指 Offer.68.I-二叉搜索树的最近公共祖先 - 小杨同学的blog</title>
+  <title>剑指 Offer.33-二叉搜索树的后序遍历序列 - 小杨同学的blog</title>
 
   
 
   
-    <meta name="description" content="剑指 Offer.68.I-二叉搜索树的最近公共祖先">
+    <meta name="description" content="剑指 Offer.33-二叉搜索树的后序遍历序列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指 Offer.68.I-二叉搜索树的最近公共祖先">
-<meta property="og:url" content="http://example.com/2022/04/01/%E5%89%91%E6%8C%87offer68-2/index.html">
+<meta property="og:title" content="剑指 Offer.33-二叉搜索树的后序遍历序列">
+<meta property="og:url" content="http://example.com/2022/04/02/%E5%89%91%E6%8C%87offer33/index.html">
 <meta property="og:site_name" content="小杨同学的blog">
-<meta property="og:description" content="剑指 Offer.68.I-二叉搜索树的最近公共祖先">
+<meta property="og:description" content="剑指 Offer.33-二叉搜索树的后序遍历序列">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-01T13:07:50.877Z">
-<meta property="article:modified_time" content="2022-04-01T13:07:28.496Z">
+<meta property="article:published_time" content="2022-04-02T12:30:14.972Z">
+<meta property="article:modified_time" content="2022-04-02T14:22:40.761Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,7 +69,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%83%B3%E6%B3%95%EF%BC%88%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%EF%BC%89"><span class="toc-text">个人想法（中序遍历）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95"><span class="toc-text">官方解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95%EF%BC%88%E9%80%92%E5%BD%92%E5%88%86%E6%B2%BB%EF%BC%89"><span class="toc-text">官方解法（递归分治）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%88%E5%8D%95%E8%B0%83%E6%A0%88%EF%BC%89"><span class="toc-text">解法二（单调栈）</span></a></li></ol></li></ol></div></div></div>
 
 
 </div>
@@ -81,26 +81,22 @@
 
       
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-04-01T13:07:50.877Z">2022-04-01</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-04-02T12:30:14.972Z">2022-04-02</time></div></div>
 
 <article class='content md post'>
-<h1 class="article-title"><span>剑指 Offer.68.I-二叉搜索树的最近公共祖先</span></h1>
-<p>剑指 Offer.68.I-二叉搜索树的最近公共祖先</p>
+<h1 class="article-title"><span>剑指 Offer.33-二叉搜索树的后序遍历序列</span></h1>
+<p>剑指 Offer.33-二叉搜索树的后序遍历序列</p>
 <span id="more"></span>
 
-<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指 Offer 68 - I. 二叉搜索树的最近公共祖先</a>&gt;</p>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/">剑指 Offer 33. 二叉搜索树的后序遍历序列</a>&gt;</p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
-<p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先</p>
-<p>对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（<strong>一个节点也可以是它自己的祖先</strong>）</p>
+<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 <code>true</code>，否则返回 <code>false</code>。假设输入的数组的任意两个数字都互不相同。</p>
 </blockquote>
-<h2 id="个人想法（中序遍历）"><a href="#个人想法（中序遍历）" class="headerlink" title="个人想法（中序遍历）"></a>个人想法（中序遍历）</h2><p>根据题目条件，二叉树是二叉搜索树，故存在明显的大小关系，能否寻找数字之间的大小关系，通过单轮迭代实现，<strong>未成功实现</strong></p>
-<h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>在以下三种情况下，<code>root</code>节点为<code>p</code>,<code>q</code>的最近公共祖先</p>
-<ol>
-<li>p与q在root的子树中，且分别位于子树的异侧</li>
-<li>p &#x3D; root，q在root的左子树或者右子树中</li>
-<li>q &#x3D; root，p在root的左子树或者右子树中</li>
-</ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(root.val &lt; p.val &amp;&amp; root.val &lt; q.val) <span class="comment">// p,q 都在 root 的右子树中</span></span><br><span class="line">                root = root.right; <span class="comment">// 遍历至右子节点</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(root.val &gt; p.val &amp;&amp; root.val &gt; q.val) <span class="comment">// p,q 都在 root 的左子树中</span></span><br><span class="line">                root = root.left; <span class="comment">// 遍历至左子节点</span></span><br><span class="line">            	<span class="comment">// 当p,q位于异侧或者p与root相等，或者q与root相等 </span></span><br><span class="line">            	<span class="comment">// 通过排除不可行解搜索得到可行解</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="官方解法（递归分治）"><a href="#官方解法（递归分治）" class="headerlink" title="官方解法（递归分治）"></a>官方解法（递归分治）</h2><p>根据<code>后续遍历</code>，<code>二叉搜索树</code>的特性，根节点的左子树全部小于根节点，右子树全部大于根节点，根据此条件，进行递归判断</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyPostorder</span><span class="params">(<span class="type">int</span>[] postorder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> recur(postorder,<span class="number">0</span>,postorder.length-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">recur</span><span class="params">(<span class="type">int</span>[] postorder,<span class="type">int</span> i,<span class="type">int</span> j)</span>&#123;</span><br><span class="line">        <span class="comment">// 当到达单个节点的时候 直接返回true</span></span><br><span class="line">        <span class="keyword">if</span>(i&gt;=j) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> i;</span><br><span class="line">        <span class="comment">// 验证当前根节点左子树节点的合法性</span></span><br><span class="line">        <span class="keyword">while</span>(postorder[p] &lt; postorder[j]) p++;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> p;</span><br><span class="line">        <span class="comment">// 验证当前节点右子树节点的合法性</span></span><br><span class="line">        <span class="keyword">while</span>(postorder[p] &gt; postorder[j]) p++;</span><br><span class="line">        <span class="comment">// 当前树的合法性 当前树的左右节点序列合法，递归验证左右子树</span></span><br><span class="line">        <span class="type">return</span> <span class="variable">p</span> <span class="operator">=</span>= j &amp;&amp; recur(postorder,i,m-<span class="number">1</span>) &amp;&amp; recur(postorder,m,j-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解法二（单调栈）"><a href="#解法二（单调栈）" class="headerlink" title="解法二（单调栈）"></a>解法二（单调栈）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyPostorder</span><span class="params">(<span class="type">int</span>[] postorder)</span> &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">root</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> postorder.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(postorder[i] &gt; root) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 若节点大于当前节点 则正常入栈</span></span><br><span class="line">            <span class="comment">// 当遇到递减元素时，更新root至最接近当前节点的值</span></span><br><span class="line">            <span class="comment">// 当前节点进栈 通过单调栈辅助验证序列合法性</span></span><br><span class="line">            <span class="keyword">while</span>(!stack.isEmpty() &amp;&amp; stack.peek() &gt; postorder[i])</span><br><span class="line">            	root = stack.pop();</span><br><span class="line">            stack.add(postorder[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -108,7 +104,7 @@
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/04/01/%E5%89%91%E6%8C%87offer64/">剑指 Offer.64-求1+2+...+n<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/04/01/nginx/">undefined<span class="note">较新</span></a></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/04/02/%E5%89%91%E6%8C%87offer16/">剑指 Offer.16-数值的整数次方<span class="note">较早</span></a><div class="line"></div></section></div>
 
 
 

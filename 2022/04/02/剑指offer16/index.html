@@ -18,16 +18,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>小杨同学的blog</title>
+  <title>剑指 Offer.16-数值的整数次方 - 小杨同学的blog</title>
 
   
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="小杨同学的blog">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="剑指 Offer.16-数值的整数次方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指 Offer.16-数值的整数次方">
+<meta property="og:url" content="http://example.com/2022/04/02/%E5%89%91%E6%8C%87offer16/index.html">
 <meta property="og:site_name" content="小杨同学的blog">
+<meta property="og:description" content="剑指 Offer.16-数值的整数次方">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-02T12:30:13.018Z">
+<meta property="article:modified_time" content="2022-04-02T13:46:35.652Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -51,8 +55,10 @@
   
 
 
+
+
   <div class='l_body' id='start'>
-    <aside class='l_left' layout=''>
+    <aside class='l_left' layout='post'>
     
 
 
@@ -62,80 +68,48 @@
 <nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/notes/">关于我</a></nav></header>
 
 <div class="widgets">
-<div class="widget-wrap" id="markdown"><div class="widget-header cap dis-select"><span class="name">欢迎访问~</span></div><div class="widget-body fs14"><p>贵有恒，何必三更起、五更眠<br>最无益，只怕一日曝、十日寒</p>
-</div></div>
 
-<div class="widget-wrap" id="recent"><div class="widget-header cap dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><div class="more-item"><a class="title" href="/2022/04/02/%E5%89%91%E6%8C%87offer33/">剑指 Offer.33-二叉搜索树的后序遍历序列</a></div><div class="more-item"><a class="title" href="/2022/04/02/%E5%89%91%E6%8C%87offer16/">剑指 Offer.16-数值的整数次方</a></div><div class="more-item"><a class="title" href="/2022/04/02/%E5%89%91%E6%8C%87offer07/">剑指 Offer.07-重建二叉树</a></div><div class="more-item"><a class="title" href="/2022/04/01/%E5%89%91%E6%8C%87offer68-1/">剑指 Offer.68.II-二叉树的最近公共祖先</a></div><div class="more-item"><a class="title" href="/2022/04/01/%E5%89%91%E6%8C%87offer68-2/">剑指 Offer.68.I-二叉搜索树的最近公共祖先</a></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E6%83%B3%E6%B3%95"><span class="toc-text">个人想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E8%A7%A3%E6%B3%95"><span class="toc-text">官方解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol></div></div></div>
+
+
 </div>
 
 
     </aside>
-    <div class='l_main list'>
+    <div class='l_main'>
       
-  
-
-<header class="header mobile-only">
-
-<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/image/touxiang.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">小杨同学的blog</div><div class="sub cap">少即是多，慢即是快</div></a></div>
-</header>
-
-
 
       
 
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-04-02T12:30:13.018Z">2022-04-02</time></div></div>
 
-  <div class='nav-wrap'>
-  <nav class='sub post cap'>
-    
-      <a class='active' href='/'>近期发布</a>
-    
-    
-    
-    
-      
-        <a href='/archives'>归档</a>
-      
-    
-  </nav>
-</div>
+<article class='content md post'>
+<h1 class="article-title"><span>剑指 Offer.16-数值的整数次方</span></h1>
+<p>剑指 Offer.16-数值的整数次方</p>
+<span id="more"></span>
 
-  <div class="post-list post"><a class="post-card post " href="/2022/04/02/%E5%89%91%E6%8C%87offer33/">
-<article class="md"><h2 class="post-title">剑指 Offer.33-二叉搜索树的后序遍历序列</h2><div class="excerpt"><p>剑指 Offer.33-二叉搜索树的后序遍历序列</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-02T12:30:14.972Z">2022-04-02</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/02/%E5%89%91%E6%8C%87offer16/">
-<article class="md"><h2 class="post-title">剑指 Offer.16-数值的整数次方</h2><div class="excerpt"><p>剑指 Offer.16-数值的整数次方</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-02T12:30:13.018Z">2022-04-02</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/02/%E5%89%91%E6%8C%87offer07/">
-<article class="md"><h2 class="post-title">剑指 Offer.07-重建二叉树</h2><div class="excerpt"><p>剑指 Offer.07-重建二叉树</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-02T12:30:10.830Z">2022-04-02</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/01/nginx/">
-<article class="md"><h2 class="post-title">2022-04-01</h2><div class="excerpt"><p>nginx配置文件最小配置文件worker_processes（开启的worker进程数）通常对应CPU的物理内核数量
-worker_connections（每个进程可以创建多少个连接）通常不需要修改
-httpinclude可通过该配置，将其他的配置文件引入
-mime.type 表示请求头标识与对应的具体文件类型
-default_type不包含在mime.type文件中的格式，则作为种类型处...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-01T13:48:41.077Z">2022-04-01</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/01/%E5%89%91%E6%8C%87offer68-2/">
-<article class="md"><h2 class="post-title">剑指 Offer.68.I-二叉搜索树的最近公共祖先</h2><div class="excerpt"><p>剑指 Offer.68.I-二叉搜索树的最近公共祖先</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-01T13:07:50.877Z">2022-04-01</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/01/%E5%89%91%E6%8C%87offer64/">
-<article class="md"><h2 class="post-title">剑指 Offer.64-求1+2+...+n</h2><div class="excerpt"><p>剑指 Offer.64-求1+2+…+n</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-01T12:48:35.407Z">2022-04-01</time></span></div></article>
-</a><a class="post-card post " href="/2022/04/01/%E5%89%91%E6%8C%87offer68-1/">
-<article class="md"><h2 class="post-title">剑指 Offer.68.II-二叉树的最近公共祖先</h2><div class="excerpt"><p>剑指 Offer.68.II-二叉树的最近公共祖先</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-04-01T12:33:28.873Z">2022-04-01</time></span></div></article>
-</a><a class="post-card post " href="/2022/03/31/%E5%89%91%E6%8C%87offer55-2/">
-<article class="md"><h2 class="post-title">剑指 Offer.II-平衡二叉树</h2><div class="excerpt"><p>剑指 Offer.II-平衡二叉树</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-03-31T03:00:28.865Z">2022-03-31</time></span></div></article>
-</a><a class="post-card post " href="/2022/03/31/%E5%89%91%E6%8C%87offer55/">
-<article class="md"><h2 class="post-title">剑指 Offer.55-二叉树的深度</h2><div class="excerpt"><p>剑指 Offer.55-二叉树的深度</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-03-31T02:52:55.749Z">2022-03-31</time></span></div></article>
-</a><a class="post-card post " href="/2022/03/30/%E5%89%91%E6%8C%87offer41/">
-<article class="md"><h2 class="post-title">剑指 Offer.41-数据流中的中位数</h2><div class="excerpt"><p>剑指 Offer.41-数据流中的中位数</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2022-03-30T03:15:53.003Z">2022-03-30</time></span></div></article>
-</a></div>
-  
-  <div class='paginator-wrap dis-select'>
-    <a class='paginator prev disable' href='/'>
-      <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
-    </a>
-    <div class='paginator current'>
-      1<span class='sep'></span>3
-    </div>
-    <a class='paginator next' href='/page/2/'>
-      <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>
-    </a>
-  </div>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>&lt;<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/">剑指 Offer 16. 数值的整数次方</a>&gt;</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
+<p>实现 <a target="_blank" rel="noopener" href="https://www.cplusplus.com/reference/valarray/pow/">pow(<em>x</em>, <em>n</em>)</a> ，即计算 x 的 n 次幂函数（即，xn）。不得使用库函数，同时不需要考虑大数问题。</p>
+</blockquote>
+<h2 id="个人想法"><a href="#个人想法" class="headerlink" title="个人想法"></a>个人想法</h2><p><strong>使用快速幂，但不会快速幂算法…</strong></p>
+<h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>快速幂，将数字的指数看为二进制，循环遍历二进制位，当目前对应的二进制位为1时，将结果乘入res中，x在每次遍历中进行平方操作</p>
+<blockquote>
+<p>注意：需要对指数为负数的情况进行处理</p>
+</blockquote>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">myPow</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">long</span> <span class="variable">b</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="type">double</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">1.0</span>;</span><br><span class="line">        <span class="keyword">if</span>(b &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            x = <span class="number">1</span> / x;</span><br><span class="line">            b = -b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(b &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>((b &amp; <span class="number">1</span>) == <span class="number">1</span>) res *= x;</span><br><span class="line">            x *= x;</span><br><span class="line">            b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/04/02/%E5%89%91%E6%8C%87offer07/">剑指 Offer.07-重建二叉树<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/04/02/%E5%89%91%E6%8C%87offer33/">剑指 Offer.33-二叉搜索树的后序遍历序列<span class="note">较新</span></a></section></div>
+
+
+
+
 
 
 
